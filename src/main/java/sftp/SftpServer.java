@@ -2,6 +2,7 @@ package sftp;
 
 import org.apache.sshd.SshServer;
 import org.apache.sshd.common.NamedFactory;
+import org.apache.sshd.common.file.virtualfs.VirtualFileSystemFactory;
 import org.apache.sshd.server.Command;
 import org.apache.sshd.server.PasswordAuthenticator;
 import org.apache.sshd.server.UserAuth;
@@ -21,6 +22,8 @@ public class SftpServer implements Runnable {
     public void run() {
         SshServer sshd = SshServer.setUpDefaultServer();
 
+        sshd.setFileSystemFactory(new VirtualFileSystemFactory("/tmp/in"));
+
         sshd.setPort(2222);
         sshd.setKeyPairProvider(new SimpleGeneratorHostKeyProvider("hostkey.ser"));
         sshd.setCommandFactory(new ScpCommandFactory());
@@ -31,7 +34,7 @@ public class SftpServer implements Runnable {
 
         sshd.setPasswordAuthenticator(new PasswordAuthenticator() {
             public boolean authenticate(String username, String password, ServerSession session) {
-                return "alexandru".equals(username) && "password".equals(password);
+                return "bau".equals(username) && "bau".equals(password);
             }
         });
 
