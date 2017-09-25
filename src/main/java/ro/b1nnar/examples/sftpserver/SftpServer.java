@@ -1,4 +1,4 @@
-package sftp;
+package ro.b1nnar.examples.sftpserver;
 
 import org.apache.sshd.SshServer;
 import org.apache.sshd.common.NamedFactory;

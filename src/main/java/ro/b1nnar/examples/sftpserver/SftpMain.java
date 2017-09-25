@@ -1,4 +1,4 @@
-package sftp;
+package ro.b1nnar.examples.sftpserver;
 
 import java.util.concurrent.TimeUnit;
 
